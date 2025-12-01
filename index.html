@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Focus & TELC B1 Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-main">
+      <h1>Daily Focus & TELC B1 Planner</h1>
+      <p class="subtitle">
+        05:00 – 22:30 · 30-minute tracking · TELC B1 Sprint
+      </p>
+    </div>
+    <div class="header-info">
+      <div class="info-box">
+        <span>Exam Date</span>
+        <strong>08 Jan 2026</strong>
+      </div>
+      <div class="info-box">
+        <span>Days Remaining</span>
+        <strong id="daysRemaining">–</strong>
+      </div>
+      <div class="info-box">
+        <span>German Focus Today</span>
+        <strong id="focusLabel">–</strong>
+      </div>
+      <div class="info-box">
+        <span>Date</span>
+        <input type="date" id="datePicker" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls">
+      <button id="todayBtn">Today</button>
+      <button id="resetPlanBtn">Reset to TELC Plan</button>
+      <button id="clearDayBtn">Clear Day</button>
+      <button id="generateReportBtn">Generate Text Report</button>
+    </section>
+
+    <section class="controls export-controls">
+      <span class="export-label">Export:</span>
+      <button id="exportCsvBtn">CSV</button>
+      <button id="exportXlsxBtn">Excel</button>
+      <button id="exportPdfBtn">PDF</button>
+    </section>
+
+    <section class="summary">
+      <h2>Daily Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span>Total Slots</span>
+          <strong id="totalSlots">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Completed Slots</span>
+          <strong id="completedSlots">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Focus (Mind)</span>
+          <strong id="focusScore">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Execution (Action)</span>
+          <strong id="executionScore">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>German Study (min)</span>
+          <strong id="germanMinutes">0</strong>
+        </div>
+      </div>
+
+      <div class="progress-wrapper">
+        <div class="progress-label">
+          <span>German Study Progress (Target: 240 min)</span>
+          <span id="germanProgressText">0 / 240 min</span>
+        </div>
+        <div class="progress-bar">
+          <div id="germanProgressBar"></div>
+        </div>
+      </div>
+
+      <p class="summary-note">
+        Aim for at least <strong>240 minutes</strong> of focused German each day
+        during the exam sprint. Mark German slots as
+        <strong>German (completed)</strong> when done.
+      </p>
+    </section>
+
+    <section class="timeline">
+      <h2>Time Slots</h2>
+      <div class="timeline-header">
+        <span class="col-time">Time</span>
+        <span class="col-status">Status</span>
+        <span class="col-task">Task / Notes (pre-planned, you can edit)</span>
+      </div>
+      <div id="timelineBody"></div>
+      <p class="legend">
+        <span class="leg leg-german">German</span>
+        <span class="leg leg-work">Work</span>
+        <span class="leg leg-break">Break</span>
+        <span class="leg leg-mind">Mind / Health</span>
+        <span class="leg leg-planning">Planning</span>
+      </p>
+    </section>
+
+    <section class="report">
+      <h2>Daily Report for ChatGPT (Text)</h2>
+      <p class="report-help">
+        Click “Generate Text Report”, then copy this text and paste it into our
+        chat. I’ll analyse it and guide your next day.
+      </p>
+      <textarea id="reportOutput" rows="10" readonly></textarea>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      Designed as your discipline assistant + TELC B1 tracker. Follow the plan,
+      mark your reality.
+    </p>
+  </footer>
+
+  <!-- External libraries for Excel and PDF export -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
